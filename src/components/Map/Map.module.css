@@ -1,4 +1,11 @@
 .map {
-    width: 75vw;
+    width: 75%;
     height: 90vh;
+    float: right;
+}
+
+@media screen and (max-width: 992px) {
+    .map {
+        width: 100%;
+    }
 }
