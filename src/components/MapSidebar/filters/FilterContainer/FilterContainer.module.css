@@ -1,0 +1,40 @@
+.active {
+    color: var(--white) !important;
+    cursor: unset !important;
+}
+
+.filter {
+    padding: 1.8em 2em;
+}
+
+.filterOption {
+    padding: 0 0 2em 0;
+}
+
+.filterOption h3 {
+    padding: 0;
+}
+
+.filterOption label {
+    padding-right: 1em;
+}
+
+.filterOption input {
+    background-color: var(--dark-20);
+    padding: 0.6em;
+    border-color: var(--dark-20);
+    border-style: none;
+    border-width: 1px;
+    border-radius: 4px;
+    color: var(--light-grey);
+}
+
+.filterOption input:focus {
+    background-color: var(--dark-30);
+    color: var(--white);
+    outline: none;
+}
+
+.filterOption input[type="checkbox" i] {
+    accent-color: var(--primary);
+}

@@ -1,3 +1,92 @@
+/*
+Container styling
+ */
 .container {
-    background-color: var(--primary);
+    background-color: var(--dark-10);
+    width: 25%;
+    float: left;
+    height: 90vh;
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        display: none;
+    }
+}
+
+/*
+Styling for the views section
+ */
+.views {
+    padding: 0.5em;
+    display: flex;
+    background-color: var(--dark-20);
+}
+
+.active {
+    color: var(--white) !important;
+    cursor: unset !important;
+}
+
+.views button {
+    width: 50%;
+    background-color: var(--dark-20);
+    border: none;
+    font-family: var(--font);
+}
+
+.views button h2 {
+    text-align: center;
+    font-weight: normal;
+    color: var(--light-grey);
+}
+
+.views button h2:hover {
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/*
+Styling for the list section
+ */
+.listWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.list {
+    position: absolute;
+    margin-top: 2em;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height: 450px;
+    width: calc(0.9 * 25%);
+    background-color: var(--dark-20);
+    padding: 1em;
+    overflow: auto;
+    bottom: 0;
+    left: calc(0.05 * 25%);
+}
+
+@media screen and (max-width: 1630px) {
+}
+
+.list ul {
+    margin: 0;
+    list-style: none;
+    padding: 0 1.1em;
+}
+
+.list ul li {
+    color: var(--white)
+}
+
+.list ul li span {
+    color: var(--light-grey);
+    font-size: 0.8em;
+}
+
+.list h2 {
+    text-align: center;
+    padding-bottom: 1em;
 }
