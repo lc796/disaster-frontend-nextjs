@@ -1,5 +1,21 @@
 import '@/styles/globals.css'
+import React from "react";
+import dynamic from "next/dynamic.js";
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  const Layout = React.useMemo(() => dynamic(
+      () => import('../components/Layout'),
+      {
+        loading: () => <span/>,
+        ssr: false
+      }
+  ), [])
+
+  return (
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+  )
 }
+
+export default App
