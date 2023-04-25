@@ -1,0 +1,39 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 800px;
+    width: 80%;
+    padding: 1em;
+}
+
+.container h2 {
+    text-align: center;
+}
+
+.container h3 {
+    margin-top: 1em;
+}
+
+.container p {
+    font-size: 1rem;
+    margin-bottom: 0.4em;
+    color: var(--light-grey);
+}
+
+.container ul {
+    margin-left: 1.5em;
+    list-style-position: inside;
+    margin-bottom: 1.5em;
+}
+
+.container ul li {
+    color: var(--primary)
+}
+
+.container span {
+    font-size: 0.7em;
+    color: var(--primary);
+}
