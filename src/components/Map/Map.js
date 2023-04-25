@@ -5,23 +5,42 @@ import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import useSWR from "swr";
 import styles from './Map.module.css'
+import Key from "@/components/Map/Key/index.js";
+import {Icon} from "leaflet/src/layer/index.js";
 
 const countryFetcher = (url) => fetch(url).then((response) => response.json());
 
 const Map = (props) => {
-    const disasters = props.disasters
+    const disasters = props.filteredDisasters
+
+    const plottableDisasters = []
+    for (const disaster of disasters) {
+        if (disaster.latitudinal != null && disaster.longitudinal != null) {
+            plottableDisasters.push(disaster)
+        }
+    }
+
+    const greenMarker = new Icon({iconUrl: "/markers/green.png", iconSize: [32, 32]})
+    const redMarker = new Icon({iconUrl: "/markers/red.png", iconSize: [32, 32]})
+    const blueMarker = new Icon({iconUrl: "/markers/blue.png", iconSize: [32, 32]})
+    const getMarkerIcon = (type) => {
+        type = type.toLowerCase()
+        if (type === "wildfire") return redMarker
+        if (type === "sea_lake_ice") return blueMarker
+        if (type === "severe_storm") return greenMarker
+    }
 
     const renderListOfDisasters = (disasters) => {
         return disasters.map(disaster => {
-
             return (
-                <div key={disaster.id}>
-                    <Marker position={[disaster.latitudinal, disaster.longitudinal]}>
-                        <Popup>
-                            {disaster.name}
-                        </Popup>
-                    </Marker>
-                </div>
+                <Marker key={disaster.id}
+                        position={[disaster.latitudinal, disaster.longitudinal]}
+                        icon={getMarkerIcon(disaster.category)}
+                >
+                    <Popup>
+                        {disaster.name}
+                    </Popup>
+                </Marker>
             )
         })
     }
@@ -55,25 +74,28 @@ const Map = (props) => {
             countryDisasterCounts[country] = currentCount + 1;
         }
 
-        return {totalDisasterCount, countryDisasterCounts}
+        return countryDisasterCounts
     }
 
     const mapPolygonColorToProportion=(proportion => {
-        return proportion > 0.8 ? '#a50f15' :
-            proportion > 0.6 ? '#de2d26' :
-                proportion > 0.4 ? '#fb6a4a' :
-                    proportion > 0.2 ? '#fc9272' :
-                        '#fee5d9';
+        return proportion > 50 ? '#80070c' :
+            proportion > 40 ? '#ad1b14' :
+                proportion > 30 ? '#d73c21' :
+                    proportion > 20 ? '#d9643f' :
+                        proportion > 10 ? '#d06f54' :
+                            proportion > 0 ? '#cca191' :
+                                '#fee5d9';
     })
 
-    const { totalDisasterCount, countryDisasterCounts } = countDisasters(disasters);
+    const countryDisasterCounts = countDisasters(disasters);
 
     const getCountryStyle = (feature => {
         const country = feature.properties.ADMIN;
-        const proportion = (countryDisasterCounts[country] / totalDisasterCount) * 100;
+        // const proportion = (countryDisasterCounts[country] / totalDisasterCount) * 100;
+        const count = countryDisasterCounts[country]
 
         return ({
-            fillColor: mapPolygonColorToProportion(proportion),
+            fillColor: mapPolygonColorToProportion(count),
             weight: 1,
             opacity: 0.2,
             color: 'white',
@@ -84,6 +106,7 @@ const Map = (props) => {
 
     return (
         <>
+            <Key selectedView={props.selectedView}/>
             <MapContainer center={[51.505, -0.09]} zoom={3} scrollWheelZoom={true} className={styles.map}>
                 <TileLayer
                     attribution="© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
@@ -91,10 +114,10 @@ const Map = (props) => {
                     minZoom={3}
                     maxZoom={12}
                 />
-                {countries && disasters && (
+                {props.selectedView === "choropleth" && countries && disasters && (
                     <GeoJSON data={countries} style={getCountryStyle} />
                 )}
-                { renderListOfDisasters(props.plottableDisasters) }
+                {props.selectedView === "marker" && renderListOfDisasters(plottableDisasters) }
             </MapContainer>
         </>
     )

@@ -1,0 +1,52 @@
+.container {
+    z-index: 1000;
+    padding: 1em;
+    background-color: var(--dark-30);
+    border-radius: 0.6em;
+    position: absolute;
+    right: 15px;
+    top: 112px;
+    width: 210px;
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        display: none;
+    }
+}
+
+.container ul {
+    list-style: none;
+}
+
+.container ul li {
+    color: var(--light-grey);
+}
+
+.fifty {
+    color: #80070c
+}
+
+.fourty {
+    color: #ad1b14
+}
+
+.thirty {
+    color: #d73c21
+}
+
+.twenty {
+    color: #d9643f
+}
+
+.ten {
+    color: #d06f54
+}
+
+.lessThanTen {
+    color: #cca191
+}
+
+.zero {
+    color: var(--white)
+}
