@@ -6,22 +6,28 @@ import styles from './Navbar.module.css'
 import Link from "next/link.js";
 
 const Navbar = () => {
-    const adminLink = "http://localhost:8080/admin"
-
     return (
         <nav className={styles.container}>
             <ul className={styles.links}>
-                <li className={styles.link}>
-                    <Link href="/">Map</Link>
+                <li>
+                    <div className={styles.link}>
+                        <Link href="/">Map</Link>
+                    </div>
                 </li>
-                <li className={styles.link}>
-                    <Link href="/stats">Stats</Link>
+                <li>
+                    <div className={styles.link}>
+                        <Link href="/stats">Stats</Link>
+                    </div>
                 </li>
-                <li className={styles.link}>
-                    <Link href="/about">About</Link>
+                <li>
+                    <div className={styles.link}>
+                        <Link href="/about">About</Link>
+                    </div>
                 </li>
-                <li className={styles.link}>
-                    <a href={adminLink}>Admin</a>
+                <li>
+                    <div className={styles.link}>
+                        <a href="localhost:8000/admin">Admin</a>
+                    </div>
                 </li>
 
             </ul>
