@@ -23,8 +23,10 @@ export const getStaticProps = async (context) => {
     const disaster = await response.json()
 
     return {
-        props: { disaster: disaster }
+        props: { disaster: disaster },
+        revalidate: 60 * 60 * 24 // 24 hours
     }
+
 }
 
 export default function Disaster({ disaster }) {

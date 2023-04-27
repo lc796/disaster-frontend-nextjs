@@ -69,5 +69,6 @@ export async function getStaticProps() {
         props: {
             disasters,
         },
+        revalidate: 60 * 60 * 24 // 24 hours
     }
 }
