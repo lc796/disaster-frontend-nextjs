@@ -1,38 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Disaster Display Frontend
+## [View the live site](https://disaster.lukecs.dev)
 
-## Getting Started
+## Introduction
+Project built using Next.JS, bootstrapped with create-next-app. This consumes the [API provided by the backend](https://github.com/lc796/disaster_display_backend) to incrementally regenerate static pages. This makes the application much faster than simply using React, and allows us to render a large number of disasters at once.
 
-First, run the development server:
+The map component uses the Leaflet library, tile layers from OpenStreetMaps, and the React-Leaflet package. The sidebar and filtering system uses the React-Select and React-Select-Countries packages. The stats page renders bar charts to display a variety of information about disasters using Nivo.rocks and various packages.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Technology used
+- Next.js (built on React)
+- Leaflet
+- OpenStreetMaps
+- React-Select and React-Select-Country
+- Nivo.rocks
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Deployed using Netlify.
