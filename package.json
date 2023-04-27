@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@changey/react-leaflet-markercluster": "^4.0.0-rc1",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/core": "^0.80.0",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "leaflet": "^1.9.3",
