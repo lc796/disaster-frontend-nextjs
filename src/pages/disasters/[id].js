@@ -2,7 +2,7 @@ import styles from '@/styles/[id].module.css'
 import Head from "next/head.js";
 
 export const getStaticPaths = async () => {
-    const response = await fetch("http://localhost:8000/api/data/")
+    const response = await fetch("http://16.16.96.183:8000/api/data/")
     const disasters = await response.json()
 
     const paths = disasters.map(disaster => {
@@ -19,7 +19,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id
-    const response = await fetch("http://localhost:8000/api/data/" + id)
+    const response = await fetch("http://16.16.96.183:8000/api/data/" + id)
     const disaster = await response.json()
 
     return {

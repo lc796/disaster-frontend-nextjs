@@ -62,7 +62,7 @@ export default function Home({disasters}) {
 }
 
 export async function getStaticProps() {
-    const response = await fetch('http://127.0.0.1:8000/api/data/')
+    const response = await fetch('http://16.16.96.183:8000/api/data/')
     const disasters = await response.json()
 
     return {
