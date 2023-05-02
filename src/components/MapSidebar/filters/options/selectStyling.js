@@ -2,7 +2,7 @@ const selectStyling = {
     control: (styles) => {
         return {
             ...styles,
-            color: "#C95858",
+            color: "#fff",
             backgroundColor: "#1C1B1A",
             border: "none",
             fontSize: "0.85em",
